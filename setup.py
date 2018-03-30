@@ -29,7 +29,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Only',
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Database :: Front-Ends',
         'Operating System :: OS Independent',
     ],
