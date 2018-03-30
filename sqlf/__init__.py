@@ -4,4 +4,4 @@
 
 __author__ = """Digitalmensch"""
 __email__ = 'contact@digitalmensch.ch'
-__version__ = '__version__ = '0.2.1''
+__version__ = '__version__ = '0.2.2''
