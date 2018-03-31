@@ -1,4 +1,4 @@
-import sqlite3
+import apsw
 import inspect
 import functools
 import contextlib
@@ -11,14 +11,14 @@ import re
 class sqldb(object):
 
     def __init__(self, sql=None, database=':memory:'):
-        self.__db = sqlite3.connect(database)
+        self.__db = apsw.Connection(database)
         if sql is not None:
             with contextlib.closing(self.__db.cursor()) as cur:
                 cur.execute(sql)
 
     def sqludf(self, func):
         sig = inspect.signature(func)
-        self.__db.create_function(func.__name__, len(sig.parameters), func)
+        self.__db.createscalarfunction(func.__name__, func)
 
     def sqlfunc(self, _func=None, post=None, single=False, default=None):
         def _decorator(func):
@@ -36,10 +36,16 @@ class sqldb(object):
 
                     result = cur.execute(sql, mapping)
 
-                    if result.description:
+                    try:
+                        description = result.getdescription()
+                    except apsw.ExecutionCompleteError:
+                        description = None
+                        return default
+
+                    if description:
                         keys = [
                             '_'.join(re.findall('\w[\w\d]+', attr[0]))
-                            for attr in result.description
+                            for attr in description
                         ]
                         result = map(lambda vals: dict(zip(keys, vals)), result)
 
@@ -53,8 +59,8 @@ class sqldb(object):
                             return list(map(post, result) if post else result)
 
                     else:
-                        self.__db.commit()
-                        return result.rowcount
+                        # self.__db.commit()
+                        return self.__db.last_insert_rowid()
 
             return _function
 
@@ -62,4 +68,3 @@ class sqldb(object):
             return _decorator(_func)
         else:
             return _decorator
-
