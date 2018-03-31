@@ -22,6 +22,9 @@ SQL in F(unctions)
      :target: https://snyk.io/test/github/digitalmensch/sqlf
      :alt: Snyk
 
+.. image:: https://api.codacy.com/project/badge/Grade/391c7b2d4f0143cf9edf62f7c0ec38c0
+     :target: https://www.codacy.com/app/betabrain/sqlf
+
 
 
 SQL in Python __doc__-strings as an alternative to ORMs
