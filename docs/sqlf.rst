@@ -12,14 +12,6 @@ sqlf.sqlf module
     :undoc-members:
     :show-inheritance:
 
-sqlf.sqlfunc module
--------------------
-
-.. automodule:: sqlf.sqlfunc
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 sqlf.udf\_lib module
 --------------------
 
