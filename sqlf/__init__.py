@@ -4,7 +4,7 @@
 
 __author__ = """Digitalmensch"""
 __email__ = 'contact@digitalmensch.ch'
-__version__ = '0.2.5'
+__version__ = '0.2.6'
 
 from .sqlfunc import sqldb
 from .sqlf import sql
