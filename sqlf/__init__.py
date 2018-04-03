@@ -7,3 +7,4 @@ __email__ = 'contact@digitalmensch.ch'
 __version__ = '0.2.4'
 
 from .sqlfunc import sqldb
+from .sqlf import sql

@@ -6,6 +6,9 @@
 import pytest
 import sqlf
 
+################################################################################
+# Old API (sqlfunc)
+################################################################################
 
 db = sqlf.sqldb('''
     CREATE TABLE IF NOT EXISTS users (
@@ -59,3 +62,25 @@ def test_scenario():
     x3 = list_users()
     print('x3', x3)
     assert len(x3) == 1
+
+################################################################################
+# New API (sqlf)
+################################################################################
+
+def test_new():
+    @sqlf.sql()
+    def _setup():
+        ''' create table tests (a, b, c, d); '''
+
+    @sqlf.sql()
+    def _insert(a, b=2, c=3):
+        ''' insert into tests (a, b, c, d) values (:a, :b, :c, :c); '''
+
+    @sqlf.sql()
+    def _query():
+        ''' select * from tests; '''
+
+    assert 0 == len(list(_setup()))
+    assert 0 == len(list(_query()))
+    assert 0 == len(list(_insert(1, b=3)))
+    assert 1 == len(list(_query()))
