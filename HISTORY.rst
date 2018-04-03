@@ -2,6 +2,14 @@
 History
 =======
 
+0.2.7 (2018-04-03)
+------------------
+
+* Update docs
+* Remove old sqlfunc code
+* Add UDF cbor, uncbor
+* Add helper to list history
+
 0.2.6 (2018-04-03)
 ------------------
 
