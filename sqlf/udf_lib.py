@@ -6,6 +6,7 @@
 '''
 
 import cbor2
+import re
 import typeguard
 import typing
 
@@ -15,13 +16,11 @@ import typing
 
 @typeguard.typechecked
 def match(string1 : str, string2 : str) -> bool:
-    import re
     return list(re.findall('[a-z0-9]+', string1.lower())) == \
            list(re.findall('[a-z0-9]+', string2.lower()))
 
 @typeguard.typechecked
 def number(string : str) -> typing.Union[int, float, None]:
-    import re
     for tmp in re.finditer('\d+(\.\d+)?', string):
         tmp = tmp.group(0)
         if '.' in tmp:
@@ -37,10 +36,8 @@ def number(string : str) -> typing.Union[int, float, None]:
 
 @typeguard.typechecked
 def cbor(obj) -> bytes:
-    import cbor2
     return cbor2.dumps(obj)
 
 @typeguard.typechecked
 def uncbor(string : bytes):
-    import cbor2
     return cbor2.loads(string)
