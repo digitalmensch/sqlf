@@ -2,6 +2,14 @@
 History
 =======
 
+0.2.6 (2018-04-03)
+------------------
+
+* Add UDF number
+* Disable support for Python 3.4 (Travis CI)
+* Add dependency typeguard
+* Add UDF match
+
 0.2.2 (2018-03-31)
 ------------------
 
