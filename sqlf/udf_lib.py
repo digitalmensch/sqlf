@@ -5,6 +5,7 @@
     udf_lib contains useful user-defined functions
 '''
 
+import cbor2
 import typeguard
 import typing
 
@@ -28,3 +29,18 @@ def number(string : str) -> typing.Union[int, float, None]:
         else:
             return int(tmp)
         break
+
+
+################################################################################
+# Data Serialisation
+################################################################################
+
+@typeguard.typechecked
+def cbor(obj) -> bytes:
+    import cbor2
+    return cbor2.dumps(obj)
+
+@typeguard.typechecked
+def uncbor(string : bytes):
+    import cbor2
+    return cbor2.loads(string)
