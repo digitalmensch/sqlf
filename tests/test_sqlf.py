@@ -84,3 +84,12 @@ def test_new():
     assert 0 == len(list(_query()))
     assert 0 == len(list(_insert(1, b=3)))
     assert 1 == len(list(_query()))
+
+def test_scalar_udf():
+    @sqlf.scalar_udf
+    def one():
+        return 1
+    @sqlf.sql()
+    def _select_one():
+        ''' select one() as one; '''
+    assert [{'one': 1}] == list(_select_one())

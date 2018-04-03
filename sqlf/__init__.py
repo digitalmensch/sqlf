@@ -8,3 +8,4 @@ __version__ = '0.2.4'
 
 from .sqlfunc import sqldb
 from .sqlf import sql
+from .sqlf import scalar_udf

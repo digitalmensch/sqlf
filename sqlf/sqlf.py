@@ -47,11 +47,12 @@ def sql(*, return_type=None):
 
 
 def scalar_udf(func):
-    pass
+    __connection.createscalarfunction(func.__name__, func)
+    return func
 
 ################################################################################
 # Internals
 ################################################################################
 
 def colname(desc):
-    '_'.join(re.findall('\w[\w\d]+', desc[0]))
+    return '_'.join(re.findall('\w[\w\d]+', desc[0]))
