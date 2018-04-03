@@ -3,7 +3,7 @@
 
 """Tests for `sqlf` package."""
 
-import pytest
+# import pytest
 import sqlf
 
 
