@@ -1,1 +1,2 @@
 apsw==3.9.2.post1
+typeguard==2.1.4
