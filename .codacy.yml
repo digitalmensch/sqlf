@@ -1,0 +1,15 @@
+---
+engines:
+  pylint:
+    enabled: true
+    python_version: 3
+  bandit:
+    enabled: true
+  prospector:
+    enabled: true
+  metrics:
+    enabled: true
+  radon:
+    enabled: true
+exclude_paths:
+  - '**/tests/**'
