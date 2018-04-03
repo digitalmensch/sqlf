@@ -9,6 +9,7 @@ name = "pypi"
 
 apsw = "==3.9.2.post1"
 typeguard = "==2.1.4"
+"cbor2" = "==4.0.1"
 
 
 [dev-packages]
