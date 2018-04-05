@@ -12,4 +12,4 @@ engines:
   radon:
     enabled: true
 exclude_paths:
-  - '**/tests/**'
+  - 'tests/**'
