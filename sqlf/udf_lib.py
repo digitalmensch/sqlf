@@ -33,6 +33,23 @@ def number(string: str) -> typing.Union[int, float, None]:
 
 
 ###############################################################################
+# Data Encodings
+###############################################################################
+
+
+@typeguard.typechecked
+def _binary(data: typing.Union[str, bytes]) -> bytes:
+    if isinstance(data, str):
+        return data.encode('utf-8')
+    return data
+
+
+@typeguard.typechecked
+def hex(data: typing.Union[str, bytes]) -> str:
+    return _binary(data).hex()
+
+
+###############################################################################
 # Data Serialisation
 ###############################################################################
 
