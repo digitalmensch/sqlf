@@ -49,3 +49,9 @@ def test_cbor():
 
 def test_nonce():
     assert len(sqlf.udf_lib.nonce(22)) == 22
+
+
+def test_cryptography_sha3():
+    assert sqlf.udf_lib.sha3('test')
+    assert sqlf.udf_lib.sha3(b'test')
+    assert len(sqlf.udf_lib.sha3('a')) == len(sqlf.udf_lib.sha3('aaaaaaaa'))

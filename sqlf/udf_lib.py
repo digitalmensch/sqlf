@@ -6,6 +6,7 @@
 '''
 
 import cbor2
+import hashlib
 import re
 import typeguard
 import typing
@@ -73,3 +74,8 @@ def uncbor(string: bytes):
 def nonce(n: int = 64) -> bytes:
     import os
     return os.urandom(n)
+
+
+@typeguard.typechecked
+def sha3(data: typing.Union[str, bytes]) -> bytes:
+    return hashlib.sha3_512(_binary(data)).digest()
