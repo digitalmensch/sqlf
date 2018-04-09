@@ -7,6 +7,7 @@
 
 import cbor2
 import hashlib
+import os
 import re
 import typeguard
 import typing
@@ -72,7 +73,6 @@ def uncbor(string: bytes):
 
 @typeguard.typechecked
 def nonce(n: int = 64) -> bytes:
-    import os
     return os.urandom(n)
 
 
