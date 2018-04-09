@@ -40,3 +40,12 @@ def test_hex():
 def test_cbor():
     tmp = dict(name='herby', pi=3.14, lst=[1, 2], dct=dict())
     assert sqlf.udf_lib.uncbor(sqlf.udf_lib.cbor(tmp)) == tmp
+
+
+###############################################################################
+# Cryptography
+###############################################################################
+
+
+def test_nonce():
+    assert len(sqlf.udf_lib.nonce(22)) == 22

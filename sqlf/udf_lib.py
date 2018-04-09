@@ -62,3 +62,14 @@ def cbor(obj) -> bytes:
 @typeguard.typechecked
 def uncbor(string: bytes):
     return cbor2.loads(string)
+
+
+###############################################################################
+# Cryptography
+###############################################################################
+
+
+@typeguard.typechecked
+def nonce(n: int = 64) -> bytes:
+    import os
+    return os.urandom(n)
