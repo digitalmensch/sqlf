@@ -32,6 +32,15 @@ def test_tohex():
     assert sqlf.udf_lib.tohex(b'test') == '74657374'
 
 
+def test_base91():
+    assert 'fPNKd' == sqlf.udf_lib.b91encode('test')
+    assert 'fPNKd' == sqlf.udf_lib.b91encode(b'test')
+    assert b'May a moody baby doom a yam?\n' == \
+        sqlf.udf_lib.b91decode('8D9Kc)=/2$WzeFui#G9Km+<{VT2u9MZil}[A')
+    tmp = sqlf.udf_lib.nonce()
+    assert sqlf.udf_lib.b91decode(sqlf.udf_lib.b91encode(tmp)) == tmp
+
+
 ###############################################################################
 # Data Serialisation
 ###############################################################################

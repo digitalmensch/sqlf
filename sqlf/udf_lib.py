@@ -5,6 +5,7 @@
     udf_lib contains useful user-defined functions
 '''
 
+import base91
 import cbor2
 import hashlib
 import os
@@ -49,6 +50,16 @@ def _binary(data: typing.Union[str, bytes]) -> bytes:
 @typeguard.typechecked
 def tohex(data: typing.Union[str, bytes]) -> str:
     return _binary(data).hex()
+
+
+@typeguard.typechecked
+def b91encode(data: typing.Union[str, bytes]) -> str:
+    return base91.encode(_binary(data))
+
+
+@typeguard.typechecked
+def b91decode(data: str) -> bytes:
+    return bytes(base91.decode(data))
 
 
 ###############################################################################

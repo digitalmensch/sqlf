@@ -11,7 +11,12 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['apsw', 'typeguard', 'cbor2' ]
+requirements = [
+    'apsw',
+    'base91',
+    'cbor2',
+    'typeguard',
+]
 
 setup_requirements = ['pytest-runner', ]
 
