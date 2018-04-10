@@ -23,28 +23,27 @@ atexit.register(__connection.close)
 # Public API
 ###############################################################################
 
-def sql(*, return_type=None):
-    def _decorator(func):
-        sql = func.__doc__
-        signature = inspect.signature(func)
-        params = tuple(signature.parameters.keys())
 
-        @functools.wraps(func)
-        def _wrapper(*args, **kwargs):
-            with contextlib.closing(__connection.cursor()) as cursor:
-                bound = signature.bind(*args, **kwargs)
-                bound.apply_defaults()
-                mapping = dict(zip(params, bound.args))
-                cursor.execute(sql, mapping)
-                try:
-                    columns = list(map(colname, cursor.getdescription()))
-                    for row in cursor:
-                        tmp = dict(zip(columns, row))
-                        yield return_type(tmp) if return_type else tmp
-                except apsw.ExecutionCompleteError:
-                    return
-        return _wrapper
-    return _decorator
+def sql(func):
+    ''' the magical function decorator '''
+    sql = func.__doc__
+    signature = inspect.signature(func)
+    params = tuple(signature.parameters.keys())
+
+    @functools.wraps(func)
+    def _wrapper(*args, **kwargs):
+        with contextlib.closing(__connection.cursor()) as cursor:
+            bound = signature.bind(*args, **kwargs)
+            bound.apply_defaults()
+            mapping = dict(zip(params, bound.args))
+            cursor.execute(sql, mapping)
+            try:
+                columns = list(map(colname, cursor.getdescription()))
+                for row in cursor:
+                    yield dict(zip(columns, row))
+            except apsw.ExecutionCompleteError:
+                return
+    return _wrapper
 
 
 def scalar_udf(func):

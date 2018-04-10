@@ -15,7 +15,7 @@ import sqlf
 def test_old_scenario():
     '''Test script ported from sqlfunc'''
 
-    @sqlf.sql()
+    @sqlf.sql
     def setup():
         '''
             CREATE TABLE IF NOT EXISTS users (
@@ -33,20 +33,20 @@ def test_old_scenario():
     def bcrypt_verify(password, bcrypthash):
         return 'password123' == password
 
-    @sqlf.sql()
+    @sqlf.sql
     def add_user(username, password):
         ''' INSERT OR IGNORE INTO users (username, bcrypt)
             VALUES (:username, bcrypt_hash(:password));
         '''
 
-    @sqlf.sql()
+    @sqlf.sql
     def login(username, password):
         ''' SELECT 1 FROM users
             WHERE username=:username
               AND bcrypt_verify(:password, bcrypt);
         '''
 
-    @sqlf.sql()
+    @sqlf.sql
     def list_users():
         ''' SELECT userid, username FROM users;
         '''
@@ -68,15 +68,15 @@ def test_old_scenario():
 
 
 def test_new_scenario():
-    @sqlf.sql()
+    @sqlf.sql
     def _setup():
         ''' create table tests (a, b, c, d); '''
 
-    @sqlf.sql()
+    @sqlf.sql
     def _insert(a, b=2, c=3):
         ''' insert into tests (a, b, c, d) values (:a, :b, :c, :c); '''
 
-    @sqlf.sql()
+    @sqlf.sql
     def _query():
         ''' select * from tests; '''
 
@@ -91,14 +91,14 @@ def test_scalar_udf():
     def one():
         return 1
 
-    @sqlf.sql()
+    @sqlf.sql
     def _select_one():
         ''' select one() as one; '''
     assert [{'one': 1}] == list(_select_one())
 
 
 def test_similar():
-    @sqlf.sql()
+    @sqlf.sql
     def _test(a):
         ''' select similar(:a, 'this-is-a-test') as m; '''
     assert [{'m': True}] == list(_test('this is . @a test'))
@@ -106,7 +106,7 @@ def test_similar():
 
 
 def test_number():
-    @sqlf.sql()
+    @sqlf.sql
     def _test(a):
         ''' select number(:a) as n; '''
     assert [{'n': 3.14}] == list(_test('this costs 3.14 eur'))
@@ -114,7 +114,7 @@ def test_number():
 
 
 def test_tohex():
-    @sqlf.sql()
+    @sqlf.sql
     def _test(a):
         ''' select tohex(:a) as h; '''
     assert [{'h': '616263'}] == list(_test('abc'))
