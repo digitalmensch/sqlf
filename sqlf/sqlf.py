@@ -59,12 +59,12 @@ def single_row(func):
     return _wrapper
 
 
-def as_type(type):
+def as_type(type_):
     def _decorator(func):
         @functools.wraps(func)
         def _wrapper(*args, **kwargs):
             for row in func(*args, **kwargs):
-                yield type(**row)
+                yield type_(**row)
         return _wrapper
     return _decorator
 
