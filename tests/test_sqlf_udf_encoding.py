@@ -13,7 +13,7 @@ import sqlf
 
 
 def test_tohex():
-    @sqlf.sql
+    @sqlf.sqlf
     def _test(a):
         ''' select tohex(:a) as h; '''
     assert [{'h': '616263'}] == list(_test('abc'))

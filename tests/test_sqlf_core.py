@@ -14,7 +14,7 @@ import types
 
 
 def test_sql_function():
-    @sqlf.sql
+    @sqlf.sqlf
     def test():
         ''' select 1 as one; '''
     assert test is not None
@@ -22,7 +22,7 @@ def test_sql_function():
 
 
 def test_sql_function_yields_generator():
-    @sqlf.sql
+    @sqlf.sqlf
     def test():
         ''' select 1 as one; '''
     tmp = test()
@@ -33,7 +33,7 @@ def test_sql_function_yields_generator():
 @pytest.mark.parametrize("value", [(1, 3.14, '', b'', None, [], {})])
 def test_sqlf_decorator_takes_function(value):
     with pytest.raises(TypeError):
-        sqlf.sql(value)
+        sqlf.sqlf(value)
 
 
 ###############################################################################
@@ -53,7 +53,7 @@ def test_scalar_udf_registers_function():
     def one():
         return 1
 
-    @sqlf.sql
+    @sqlf.sqlf
     def _select_one():
         ''' select one() as one; '''
     assert [{'one': 1}] == list(_select_one())
@@ -89,7 +89,7 @@ def test_single_row_returns_first_row():
 
 def test_as_type():
     @sqlf.as_type(lambda **kw: tuple(kw.keys()))
-    @sqlf.sql
+    @sqlf.sqlf
     def _test():
         ''' select 3.14 as pi, 11 as eleven; '''
     tmp = list(_test())[0]

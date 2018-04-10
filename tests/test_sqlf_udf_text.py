@@ -14,7 +14,7 @@ import sqlf
 
 def test_similar():
     @sqlf.single_row
-    @sqlf.sql
+    @sqlf.sqlf
     def test(a):
         ''' select similar(:a, 'this-is-a-test') as m; '''
     assert {'m': True} == test('this is . @a test')
@@ -23,7 +23,7 @@ def test_similar():
 
 def test_number():
     @sqlf.single_row
-    @sqlf.sql
+    @sqlf.sqlf
     def test(a):
         ''' select number(:a) as n; '''
     assert {'n': 3.14} == test('this costs 3.14 eur')

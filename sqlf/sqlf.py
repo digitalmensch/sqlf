@@ -27,7 +27,7 @@ atexit.register(__connection.close)
 
 
 @typeguard.typechecked
-def sql(func: types.FunctionType):
+def sqlf(func: types.FunctionType):
     ''' the magical function decorator '''
     sql = func.__doc__
     signature = inspect.signature(func)

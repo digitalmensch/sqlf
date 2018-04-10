@@ -6,7 +6,7 @@ __author__ = """Digitalmensch"""
 __email__ = 'contact@digitalmensch.ch'
 __version__ = '0.2.8'
 
-from .sqlf import sql
+from .sqlf import sqlf
 from .sqlf import scalar_udf
 from .sqlf import single_row
 from .sqlf import as_type
@@ -33,7 +33,7 @@ scalar_udf(sha3)
 del similar, number, tohex, b91encode, b91decode, cbor, uncbor, nonce, sha3
 
 __all__ = [
-    'sql',
+    'sqlf',
     'scalar_udf',
     'single_row',
     'as_type',
