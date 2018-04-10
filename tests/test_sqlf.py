@@ -95,3 +95,12 @@ def test_scalar_udf():
     def _select_one():
         ''' select one() as one; '''
     assert [{'one': 1}] == list(_select_one())
+
+
+def test_similar():
+    @sqlf.sql()
+    def _test(a):
+        ''' select similar(:a, 'this-is-a-test') as m; '''
+    assert [{'m': True}] == list(_test('this is . @a test'))
+    assert [{'m': False}] == list(_test('this ------ test'))
+

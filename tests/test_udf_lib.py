@@ -11,10 +11,10 @@ import sqlf.udf_lib
 ###############################################################################
 
 
-def test_match():
-    assert sqlf.udf_lib.match('this is a test', ' this is a test')
-    assert sqlf.udf_lib.match('This is a Test', 'this IS  a test')
-    assert sqlf.udf_lib.match('This-is-a-Test', 'this_is.a.test')
+def test_similar():
+    assert sqlf.udf_lib.similar('this is a test', ' this is a test')
+    assert sqlf.udf_lib.similar('This is a Test', 'this IS  a test')
+    assert sqlf.udf_lib.similar('This-is-a-Test', 'this_is.a.test')
 
 
 def test_number():

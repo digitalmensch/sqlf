@@ -18,7 +18,7 @@ import typing
 
 
 @typeguard.typechecked
-def match(string1: str, string2: str) -> bool:
+def similar(string1: str, string2: str) -> bool:
     return list(re.findall('[a-z0-9]+', string1.lower())) == \
            list(re.findall('[a-z0-9]+', string2.lower()))
 
