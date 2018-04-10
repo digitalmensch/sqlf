@@ -97,6 +97,14 @@ def test_scalar_udf():
     assert [{'one': 1}] == list(_select_one())
 
 
+def test_single_row():
+    @sqlf.single_row
+    @sqlf.sql
+    def _test():
+        ''' select 3.14 as pi; '''
+    assert {'pi': 3.14} == _test()
+
+
 def test_similar():
     @sqlf.sql
     def _test(a):

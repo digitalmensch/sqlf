@@ -50,6 +50,14 @@ def scalar_udf(func):
     __connection.createscalarfunction(func.__name__, func)
     return func
 
+
+def single_row(func):
+    @functools.wraps(func)
+    def _wrapper(*args, **kwargs):
+        for row in func(*args, **kwargs):
+            return row
+    return _wrapper
+
 ###############################################################################
 # Internals
 ###############################################################################

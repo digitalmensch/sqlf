@@ -8,6 +8,7 @@ __version__ = '0.2.7'
 
 from .sqlf import sql
 from .sqlf import scalar_udf
+from .sqlf import single_row
 
 # Activate built-in UDFs
 from .udf_lib import similar
