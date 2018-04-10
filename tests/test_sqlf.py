@@ -105,6 +105,14 @@ def test_similar():
     assert [{'m': False}] == list(_test('this ------ test'))
 
 
+def test_number():
+    @sqlf.sql()
+    def _test(a):
+        ''' select number(:a) as n; '''
+    assert [{'n': 3.14}] == list(_test('this costs 3.14 eur'))
+    assert [{'n': 9999}] == list(_test('in year 9999 of counting'))
+
+
 def test_tohex():
     @sqlf.sql()
     def _test(a):
