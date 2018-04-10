@@ -105,6 +105,17 @@ def test_single_row():
     assert {'pi': 3.14} == _test()
 
 
+def test_as_type():
+    @sqlf.as_type(lambda **kw: tuple(kw.keys()))
+    @sqlf.sql
+    def _test():
+        ''' select 3.14 as pi, 11 as eleven; '''
+    tmp = list(_test())[0]
+    assert len(tmp) == 2
+    assert 'pi' in tmp
+    assert 'eleven' in tmp
+
+
 def test_similar():
     @sqlf.sql
     def _test(a):

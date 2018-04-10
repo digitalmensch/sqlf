@@ -9,6 +9,7 @@ __version__ = '0.2.8'
 from .sqlf import sql
 from .sqlf import scalar_udf
 from .sqlf import single_row
+from .sqlf import as_type
 
 # Activate built-in UDFs
 from .udf_lib import similar
@@ -30,4 +31,6 @@ del similar, number, tohex, cbor, uncbor, nonce, sha3
 __all__ = [
     'sql',
     'scalar_udf',
+    'single_row',
+    'as_type',
 ]

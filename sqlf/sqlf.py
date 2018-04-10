@@ -58,6 +58,17 @@ def single_row(func):
             return row
     return _wrapper
 
+
+def as_type(type):
+    def _decorator(func):
+        @functools.wraps(func)
+        def _wrapper(*args, **kwargs):
+            for row in func(*args, **kwargs):
+                yield type(**row)
+        return _wrapper
+    return _decorator
+
+
 ###############################################################################
 # Internals
 ###############################################################################
