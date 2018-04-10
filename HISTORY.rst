@@ -2,6 +2,16 @@
 History
 =======
 
+0.2.8 (2018-04-10)
+------------------
+
+* Add single_row decorator
+* Fix naming of match UDF to similar
+* Add UDF sha3
+* Add UDF nounce
+* Add UDF hex
+* Satisfy linter
+
 0.2.7 (2018-04-03)
 ------------------
 
