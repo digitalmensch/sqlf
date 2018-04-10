@@ -15,8 +15,8 @@ from .sqlf import as_type
 from .udf_lib import similar
 from .udf_lib import number
 from .udf_lib import tohex
-from .udf_lib import b91encode
-from .udf_lib import b91decode
+from .udf_lib import b91enc
+from .udf_lib import b91dec
 from .udf_lib import cbor
 from .udf_lib import uncbor
 from .udf_lib import nonce
@@ -24,13 +24,13 @@ from .udf_lib import sha3
 scalar_udf(similar)
 scalar_udf(number)
 scalar_udf(tohex)
-scalar_udf(b91encode)
-scalar_udf(b91decode)
+scalar_udf(b91enc)
+scalar_udf(b91dec)
 scalar_udf(cbor)
 scalar_udf(uncbor)
 scalar_udf(nonce)
 scalar_udf(sha3)
-del similar, number, tohex, b91encode, b91decode, cbor, uncbor, nonce, sha3
+del similar, number, tohex, b91enc, b91dec, cbor, uncbor, nonce, sha3
 
 __all__ = [
     'sqlf',

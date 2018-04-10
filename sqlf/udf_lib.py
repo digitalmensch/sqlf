@@ -53,12 +53,12 @@ def tohex(data: typing.Union[str, bytes]) -> str:
 
 
 @typeguard.typechecked
-def b91encode(data: typing.Union[str, bytes]) -> str:
+def b91enc(data: typing.Union[str, bytes]) -> str:
     return base91.encode(_binary(data))
 
 
 @typeguard.typechecked
-def b91decode(data: str) -> bytes:
+def b91dec(data: str) -> bytes:
     return bytes(base91.decode(data))
 
 
