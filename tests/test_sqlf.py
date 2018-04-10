@@ -104,3 +104,9 @@ def test_similar():
     assert [{'m': True}] == list(_test('this is . @a test'))
     assert [{'m': False}] == list(_test('this ------ test'))
 
+
+def test_tohex():
+    @sqlf.sql()
+    def _test(a):
+        ''' select tohex(:a) as h; '''
+    assert [{'h': '616263'}] == list(_test('abc'))

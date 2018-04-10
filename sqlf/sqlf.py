@@ -57,4 +57,4 @@ def scalar_udf(func):
 
 
 def colname(desc):
-    return '_'.join(re.findall('\w[\w\d]+', desc[0]))
+    return '_'.join(re.findall('\w[\w\d]*', desc[0]))
