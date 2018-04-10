@@ -9,6 +9,23 @@ __version__ = '0.2.7'
 from .sqlf import sql
 from .sqlf import scalar_udf
 
+# Activate built-in UDFs
+from .udf_lib import match
+from .udf_lib import number
+from .udf_lib import tohex
+from .udf_lib import cbor
+from .udf_lib import uncbor
+from .udf_lib import nonce
+from .udf_lib import sha3
+scalar_udf(match)
+scalar_udf(number)
+scalar_udf(tohex)
+scalar_udf(cbor)
+scalar_udf(uncbor)
+scalar_udf(nonce)
+scalar_udf(sha3)
+del match, number, tohex, cbor, uncbor, nonce, sha3
+
 __all__ = [
     'sql',
     'scalar_udf',

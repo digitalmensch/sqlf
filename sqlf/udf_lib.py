@@ -47,7 +47,7 @@ def _binary(data: typing.Union[str, bytes]) -> bytes:
 
 
 @typeguard.typechecked
-def hex(data: typing.Union[str, bytes]) -> str:
+def tohex(data: typing.Union[str, bytes]) -> str:
     return _binary(data).hex()
 
 
