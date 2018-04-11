@@ -20,8 +20,11 @@ from ._udf_encoding import b91dec
 from ._udf_cryptography import nonce
 from ._udf_cryptography import sha3
 from ._udf_serialisation import cbor_map
+from ._udf_serialisation import cbor_list
 from ._udf_serialisation import cbor_insert
+from ._udf_serialisation import cbor_append
 from ._udf_serialisation import cbor_has
+from ._udf_serialisation import cbor_get
 scalar_udf(similar)
 scalar_udf(number)
 scalar_udf(tohex)
@@ -30,10 +33,13 @@ scalar_udf(b91dec)
 scalar_udf(nonce)
 scalar_udf(sha3)
 scalar_udf(cbor_map)
+scalar_udf(cbor_list)
 scalar_udf(cbor_insert)
+scalar_udf(cbor_append)
 scalar_udf(cbor_has)
+scalar_udf(cbor_get)
 del similar, number, tohex, b91enc, b91dec, nonce, sha3, cbor_map, cbor_insert
-del cbor_has
+del cbor_has, cbor_append, cbor_list
 
 __all__ = [
     'sqlf',
