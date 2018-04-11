@@ -6,10 +6,10 @@ __author__ = """Digitalmensch"""
 __email__ = 'contact@digitalmensch.ch'
 __version__ = '0.2.8'
 
-from .sqlf import sqlf
-from .sqlf import scalar_udf
-from .sqlf import single_row
-from .sqlf import as_type
+from ._sqlf import sqlf
+from ._sqlf import scalar_udf
+from ._sqlf import single_row
+from ._sqlf import as_type
 
 # Activate built-in UDFs
 from ._udf_text import similar
@@ -25,6 +25,8 @@ from ._udf_serialisation import cbor_insert
 from ._udf_serialisation import cbor_append
 from ._udf_serialisation import cbor_has
 from ._udf_serialisation import cbor_get
+
+
 scalar_udf(similar)
 scalar_udf(number)
 scalar_udf(tohex)
@@ -38,8 +40,21 @@ scalar_udf(cbor_insert)
 scalar_udf(cbor_append)
 scalar_udf(cbor_has)
 scalar_udf(cbor_get)
-del similar, number, tohex, b91enc, b91dec, nonce, sha3, cbor_map, cbor_insert
-del cbor_has, cbor_append, cbor_list
+
+
+del similar
+del number
+del tohex
+del b91enc
+del b91dec
+del nonce
+del sha3
+del cbor_map
+del cbor_list
+del cbor_insert
+del cbor_append
+del cbor_has
+del cbor_get
 
 __all__ = [
     'sqlf',
