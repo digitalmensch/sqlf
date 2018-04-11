@@ -4,7 +4,7 @@
 
 __author__ = """Digitalmensch"""
 __email__ = 'contact@digitalmensch.ch'
-__version__ = '0.2.8'
+__version__ = '0.2.9'
 
 from ._sqlf import sqlf
 from ._sqlf import scalar_udf
