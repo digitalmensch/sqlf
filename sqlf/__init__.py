@@ -12,16 +12,16 @@ from .sqlf import single_row
 from .sqlf import as_type
 
 # Activate built-in UDFs
-from .udf_lib import similar
-from .udf_lib import number
-from .udf_lib import tohex
-from .udf_lib import b91enc
-from .udf_lib import b91dec
-from .udf_lib import nonce
-from .udf_lib import sha3
-from .udf_lib import cbor_map
-from .udf_lib import cbor_insert
-from .udf_lib import cbor_has
+from ._udf_text import similar
+from ._udf_text import number
+from ._udf_encoding import tohex
+from ._udf_encoding import b91enc
+from ._udf_encoding import b91dec
+from ._udf_cryptography import nonce
+from ._udf_cryptography import sha3
+from ._udf_serialisation import cbor_map
+from ._udf_serialisation import cbor_insert
+from ._udf_serialisation import cbor_has
 scalar_udf(similar)
 scalar_udf(number)
 scalar_udf(tohex)
