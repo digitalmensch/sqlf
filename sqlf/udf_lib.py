@@ -67,15 +67,21 @@ def b91dec(data: str) -> bytes:
 ###############################################################################
 
 
-@typeguard.typechecked
-def cbor(obj) -> bytes:
-    return cbor2.dumps(obj)
+def cbor_map() -> bytes:
+    return cbor2.dumps(dict())
 
 
 @typeguard.typechecked
-def uncbor(string: bytes):
-    return cbor2.loads(string)
+def cbor_insert(obj: bytes, key: typing.Any, value: typing.Any) -> bytes:
+    tmp = cbor2.loads(obj)
+    tmp[key] = value
+    return cbor2.dumps(tmp)
 
+
+@typeguard.typechecked
+def cbor_has(obj: bytes, key: typing.Any) -> bool:
+    tmp = cbor2.loads(obj)
+    return key in tmp
 
 ###############################################################################
 # Cryptography

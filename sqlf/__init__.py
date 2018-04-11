@@ -17,20 +17,23 @@ from .udf_lib import number
 from .udf_lib import tohex
 from .udf_lib import b91enc
 from .udf_lib import b91dec
-from .udf_lib import cbor
-from .udf_lib import uncbor
 from .udf_lib import nonce
 from .udf_lib import sha3
+from .udf_lib import cbor_map
+from .udf_lib import cbor_insert
+from .udf_lib import cbor_has
 scalar_udf(similar)
 scalar_udf(number)
 scalar_udf(tohex)
 scalar_udf(b91enc)
 scalar_udf(b91dec)
-scalar_udf(cbor)
-scalar_udf(uncbor)
 scalar_udf(nonce)
 scalar_udf(sha3)
-del similar, number, tohex, b91enc, b91dec, cbor, uncbor, nonce, sha3
+scalar_udf(cbor_map)
+scalar_udf(cbor_insert)
+scalar_udf(cbor_has)
+del similar, number, tohex, b91enc, b91dec, nonce, sha3, cbor_map, cbor_insert
+del cbor_has
 
 __all__ = [
     'sqlf',
