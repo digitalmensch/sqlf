@@ -63,6 +63,7 @@ def test_various_returns_from_many_selects():
     assert {'two': 2} in tmp
     assert {'three': 3, 'four': 4} in tmp
 
+
 def test_return_from_table():
     @sqlf.sqlf
     def test():

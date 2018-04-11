@@ -43,6 +43,7 @@ def test_cbor_list_insert():
         ''' select cbor_insert(cbor_list(), 0, 3.14) as m; '''
     assert {'m': b'\x81\xfb@\t\x1e\xb8Q\xeb\x85\x1f'} == test()
 
+
 def test_cbor_list_append():
     @sqlf.single_row
     @sqlf.sqlf
