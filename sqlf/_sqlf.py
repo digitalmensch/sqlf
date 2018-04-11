@@ -56,6 +56,13 @@ def scalar_udf(func: types.FunctionType):
     return func
 
 
+def aggregate_udf(cls):
+    def _factory():
+        return cls(), cls.step, cls.final
+    __connection.createaggregatefunction(cls.__name__, _factory)
+    return cls
+
+
 @typeguard.typechecked
 def single_row(func: types.FunctionType):
     @functools.wraps(func)

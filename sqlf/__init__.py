@@ -8,6 +8,7 @@ __version__ = '0.2.8'
 
 from ._sqlf import sqlf
 from ._sqlf import scalar_udf
+from ._sqlf import aggregate_udf
 from ._sqlf import single_row
 from ._sqlf import as_type
 
@@ -59,6 +60,7 @@ del cbor_get
 __all__ = [
     'sqlf',
     'scalar_udf',
+    'aggregate_udf',
     'single_row',
     'as_type',
 ]
