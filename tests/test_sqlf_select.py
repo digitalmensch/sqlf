@@ -62,3 +62,16 @@ def test_various_returns_from_many_selects():
     assert {'one': 1} in tmp
     assert {'two': 2} in tmp
     assert {'three': 3, 'four': 4} in tmp
+
+def test_return_from_table():
+    @sqlf.sqlf
+    def test():
+        ''' create table test_table (a, b, c);
+            insert into test_table values (1, 2, 3);
+            insert into test_table values (2, 3, 4);
+            select a+b as d, b+c as e from test_table;
+            drop table test_table;
+        '''
+    tmp = list(test())
+    assert {'d': 3, 'e': 5} in tmp
+    assert {'d': 5, 'e': 7} in tmp
