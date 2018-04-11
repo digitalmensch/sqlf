@@ -2,6 +2,18 @@
 History
 =======
 
+0.2.9 (2018-04-11)
+------------------
+
+* Add support for aggregate UDFs
+* Extend cbor support
+* Refactor UDF library
+* Rename sql -> sqlf
+* Rewrite and extend tests
+* Add UDF b91enc, b91dec
+* Drop support for Python 3.5
+* Add as_type
+
 0.2.8 (2018-04-10)
 ------------------
 
