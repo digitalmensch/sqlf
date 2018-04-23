@@ -3,8 +3,8 @@
 """Top-level package for SQL in F(unctions)."""
 
 __author__ = """Digitalmensch"""
-__email__ = 'contact@digitalmensch.ch'
-__version__ = '0.2.9'
+__email__ = "contact@digitalmensch.ch"
+__version__ = "0.2.9"
 
 from ._sqlf import sqlf
 from ._sqlf import scalar_udf
@@ -57,10 +57,4 @@ del cbor_append
 del cbor_has
 del cbor_get
 
-__all__ = [
-    'sqlf',
-    'scalar_udf',
-    'aggregate_udf',
-    'single_row',
-    'as_type',
-]
+__all__ = ["sqlf", "scalar_udf", "aggregate_udf", "single_row", "as_type"]

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-''' SQL in F(unctions)
+""" SQL in F(unctions)
 
     udf_lib contains useful user-defined functions
-'''
+"""
 
 
 import base91
@@ -19,7 +19,8 @@ import typing
 @typeguard.typechecked
 def _binary(data: typing.Union[str, bytes]) -> bytes:
     if isinstance(data, str):
-        return data.encode('utf-8')
+        return data.encode("utf-8")
+
     return data
 
 

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-''' SQL in F(unctions)
+""" SQL in F(unctions)
 
     udf_lib contains useful user-defined functions
-'''
+"""
 
 
 import hashlib
