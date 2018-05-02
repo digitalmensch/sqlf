@@ -13,4 +13,3 @@ engines:
     enabled: true
 exclude_paths:
   - 'tests/**'
-  - 'docs/conf.py'
