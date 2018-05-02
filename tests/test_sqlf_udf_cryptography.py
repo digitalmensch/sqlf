@@ -16,7 +16,7 @@ import sqlf
 def test_nonce(length):
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(length):
         """ select nonce(:length) as nonce; """
 
@@ -28,7 +28,7 @@ def test_nonce(length):
 def test_sha3():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(txt1, txt2):
         """ select sha3(:txt1) = sha3(:txt2) as res,
                    length(sha3(:txt1)) as length;

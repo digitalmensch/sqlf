@@ -15,7 +15,7 @@ import sqlf
 def test_return_single_value_row():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one; """
 
@@ -25,7 +25,7 @@ def test_return_single_value_row():
 def test_return_two_values_row():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one, 2 as two; """
 
@@ -34,7 +34,7 @@ def test_return_two_values_row():
 
 def test_return_from_two_selects():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one;
             select 2 as one;
@@ -47,7 +47,7 @@ def test_return_from_two_selects():
 
 def test_two_value_returns_from_two_selects():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1.0 as one, 2.0 as two;
             select 1.1 as one, 2.1 as two;
@@ -60,7 +60,7 @@ def test_two_value_returns_from_two_selects():
 
 def test_various_returns_from_many_selects():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one;
             select 2 as two;
@@ -76,7 +76,7 @@ def test_various_returns_from_many_selects():
 
 def test_return_from_table():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ create table test_table (a, b, c);
             insert into test_table values (1, 2, 3);

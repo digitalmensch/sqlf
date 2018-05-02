@@ -15,7 +15,7 @@ import sqlf
 def test_cbor_map():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_map() as m; """
 
@@ -25,7 +25,7 @@ def test_cbor_map():
 def test_cbor_list():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_list() as m; """
 
@@ -35,7 +35,7 @@ def test_cbor_list():
 def test_cbor_map_insert():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_insert(cbor_map(), 'n', 3.14) as m; """
 
@@ -45,7 +45,7 @@ def test_cbor_map_insert():
 def test_cbor_list_insert():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_insert(cbor_list(), 0, 3.14) as m; """
 
@@ -55,7 +55,7 @@ def test_cbor_list_insert():
 def test_cbor_list_append():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_append(cbor_list(), 3.14) as m; """
 
@@ -65,7 +65,7 @@ def test_cbor_list_append():
 def test_cbor_has():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_has(cbor_insert(cbor_map(), 'n', 3.14), 'n') as m; """
 
@@ -75,7 +75,7 @@ def test_cbor_has():
 def test_cbor_get():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select cbor_get(cbor_insert(cbor_map(), 'n', 3.14), 'n') as m; """
 

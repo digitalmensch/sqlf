@@ -26,30 +26,32 @@ atexit.register(__connection.close)
 ###############################################################################
 
 
-@typeguard.typechecked
-def sqlf(func: types.FunctionType):
-    """ the magical function decorator """
-    sql = func.__doc__
-    signature = inspect.signature(func)
-    params = tuple(signature.parameters.keys())
+def sqlf():
+    @typeguard.typechecked
+    def _decorator(func: types.FunctionType):
+        """ the magical function decorator """
+        sql = func.__doc__
+        signature = inspect.signature(func)
+        params = tuple(signature.parameters.keys())
 
-    @functools.wraps(func)
-    def _wrapper(*args, **kwargs):
-        with contextlib.closing(__connection.cursor()) as cursor:
-            bound = signature.bind(*args, **kwargs)
-            bound.apply_defaults()
-            mapping = dict(zip(params, bound.args))
-            print(sql, mapping)
-            cursor.execute(sql, mapping)
-            try:
-                for row in cursor:
-                    columns = list(map(colname, cursor.getdescription()))
-                    yield dict(zip(columns, row))
+        @functools.wraps(func)
+        def _wrapper(*args, **kwargs):
+            with contextlib.closing(__connection.cursor()) as cursor:
+                bound = signature.bind(*args, **kwargs)
+                bound.apply_defaults()
+                mapping = dict(zip(params, bound.args))
+                print(sql, mapping)
+                cursor.execute(sql, mapping)
+                try:
+                    for row in cursor:
+                        columns = list(map(colname, cursor.getdescription()))
+                        yield dict(zip(columns, row))
 
-            except apsw.ExecutionCompleteError:
-                return
+                except apsw.ExecutionCompleteError:
+                    return
 
-    return _wrapper
+        return _wrapper
+    return _decorator
 
 
 @typeguard.typechecked

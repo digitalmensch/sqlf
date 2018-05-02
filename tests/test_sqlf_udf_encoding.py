@@ -14,7 +14,7 @@ import sqlf
 
 def test_tohex():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def _test(a):
         """ select tohex(:a) as h; """
 
@@ -24,7 +24,7 @@ def test_tohex():
 def test_base91_encode():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(txt):
         """ select b91enc(:txt) as b91; """
 
@@ -35,7 +35,7 @@ def test_base91_encode():
 def test_base91_decode():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(b91):
         """ select b91dec(:b91) as txt; """
 
@@ -48,7 +48,7 @@ def test_base91_decode():
 def test_base91_reversible():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(txt):
         """ select b91dec(b91enc(:txt)) as txt; """
 

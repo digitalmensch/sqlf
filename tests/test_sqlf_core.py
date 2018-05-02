@@ -15,7 +15,7 @@ import types
 
 def test_sql_function():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one; """
 
@@ -25,7 +25,7 @@ def test_sql_function():
 
 def test_sql_function_yields_generator():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select 1 as one; """
 
@@ -60,7 +60,7 @@ def test_scalar_udf_registers_function():
     def one():
         return 1
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def _select_one():
         """ select one() as one; """
 
@@ -97,7 +97,7 @@ def test_aggregate_udf_registers_function():
         def final(self, *args):
             return 1
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ select agg() as one; """
 
@@ -118,7 +118,7 @@ def test_aggregate_udf_can_be_used_in_query():
         def final(self, *args):
             return self.val
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ create table test_table (a);
             insert into test_table values (1);
@@ -166,7 +166,7 @@ def test_single_row_returns_first_row():
 def test_as_type():
 
     @sqlf.as_type(lambda **kw: tuple(kw.keys()))
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def _test():
         """ select 3.14 as pi, 11 as eleven; """
 

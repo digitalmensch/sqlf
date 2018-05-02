@@ -15,7 +15,7 @@ import sqlf
 def test_similar():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(a):
         """ select similar(:a, 'this-is-a-test') as m; """
 
@@ -26,7 +26,7 @@ def test_similar():
 def test_number():
 
     @sqlf.single_row
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test(a):
         """ select number(:a) as n; """
 

@@ -14,7 +14,7 @@ import sqlf
 
 def test_delete_one_row():
 
-    @sqlf.sqlf
+    @sqlf.sqlf()
     def test():
         """ create table test_table (a, b);
             insert into test_table values (1, 2);
