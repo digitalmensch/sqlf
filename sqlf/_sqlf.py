@@ -27,6 +27,7 @@ atexit.register(__connection.close)
 
 
 def sqlf():
+
     @typeguard.typechecked
     def _decorator(func: types.FunctionType):
         """ the magical function decorator """
@@ -51,6 +52,7 @@ def sqlf():
                     return
 
         return _wrapper
+
     return _decorator
 
 
@@ -79,6 +81,24 @@ def single_row(func: types.FunctionType):
                 raise TypeError("requires dict")
 
             return row
+
+    return _wrapper
+
+
+@typeguard.typechecked
+def single_value(func: types.FunctionType):
+
+    @functools.wraps(func)
+    def _wrapper(*args, **kwargs):
+        for row in func(*args, **kwargs):
+            if not isinstance(row, dict):
+                raise TypeError("requires dict")
+
+            for _, value in row.items():
+                return value
+
+            else:
+                raise ValueError("no value was returned")
 
     return _wrapper
 

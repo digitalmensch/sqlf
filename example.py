@@ -10,21 +10,21 @@ class kt_repository(sqlf.database):
 
     @sqlf.sqlf(single=True)
     def add(self, obj):
-        '''
+        """
             INSERT OR IGNORE INTO artefact VALUES (:aid, :data);
             SELECT :aid;
-        '''
+        """
         data = cbor2.dumps(obj)
         aid = base58.encode(hashlib.sha3_256(data))
 
-        yield 'data', data
-        yield 'aid', aid
+        yield "data", data
+        yield "aid", aid
 
     @sqlf.sqlf(single=True, default=None)
     def get(self, aid):
-        '''
+        """
             SELECT data FROM artefact WHERE aid IS :aid;
-        '''
+        """
         pass
 
     @sqlf.sqlf(chain=True)
@@ -35,8 +35,9 @@ class kt_repository(sqlf.database):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import tempfile
-    _, path = tempfile.mkstemp(prefix='sqlf_')
+
+    _, path = tempfile.mkstemp(prefix="sqlf_")
     repo = kt_repository(path=path)
-    repo.add('hello')
+    repo.add("hello")

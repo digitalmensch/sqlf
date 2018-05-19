@@ -68,6 +68,32 @@ def test_single_row_returns_first_row():
 
 
 ###############################################################################
+# sqlf.single_value
+###############################################################################
+
+
+@pytest.mark.parametrize("value", [1, 3.14, "", b"", None, [], {}])
+def test_single_value_takes_generator_function(value):
+
+    def it():
+        yield {"one": 1}
+
+    with pytest.raises(TypeError):
+        sqlf.single_value(value)
+    assert sqlf.single_value(it)() is not None
+
+
+def test_single_value_returns_first_value_from_first_row():
+
+    def it():
+        yield {"one": 1}
+        yield {"two": 2}
+
+    val = sqlf.single_value(it)()
+    assert val == 1
+
+
+###############################################################################
 # sqlf.as_type
 ###############################################################################
 
