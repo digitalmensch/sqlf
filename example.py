@@ -6,7 +6,7 @@ import hashlib
 import sqlf
 
 
-class kt_repository(object):
+class kt_repository(sqlf.database):
 
     @sqlf.sqlf(single=True)
     def add(self, obj):
@@ -33,3 +33,10 @@ class kt_repository(object):
             SELECT aid FROM artefact ORDER BY local_id;
         """
         pass
+
+
+if __name__ == '__main__':
+    import tempfile
+    _, path = tempfile.mkstemp(prefix='sqlf_')
+    repo = kt_repository(path=path)
+    repo.add('hello')
